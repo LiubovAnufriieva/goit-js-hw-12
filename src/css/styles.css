@@ -11,11 +11,11 @@
   background-color: rgba(255, 255, 255, 0.87);
 }
 
-.container {
+/* .container {
   width: 1128px;
   margin: 0 auto;
   padding: 10px;
-}
+} */
 
 form {
   display: flex;
@@ -73,6 +73,8 @@ input:placeholder {
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 22px;
+  margin: 0 auto;
+  padding: 20px;
 }
 
 .gallery-card {
@@ -127,6 +129,10 @@ input:placeholder {
 }
 
 /* HTML: <div class="loader"></div> */
+.hidden {
+  display: none;
+}
+
 .loader {
   width: 120px;
   height: 22px;
@@ -152,4 +158,18 @@ input:placeholder {
 }
 @keyframes l14 {
   100% {left: calc(100% + 20px)}
+}
+
+.loadMore {
+  display: flex;
+  justify-content: center;
+  margin: 20px auto;
+}
+
+.go-TopIMG {
+  position: fixed;
+  right: 75px;
+  bottom: 30px;
+  width: 50px;
+  height: 50px;
 }
