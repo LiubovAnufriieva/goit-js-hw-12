@@ -7,6 +7,8 @@ import { createGalleryMarkup } from './render-functions';
 
 const KEY_API = '43230635-158e2f6795128fbec19d81d21';
 const URL = 'https://pixabay.com/api/';
+const loader = document.querySelector('.loader');
+const loadBtn = document.querySelector('.load-btn');
 
 let page = 1;
 
@@ -20,7 +22,7 @@ export async function onSearch(searchQuery, page = 1) {
         orientation: 'horizontal',
         safesearch: true,
         per_page: 15,
-        page
+        page: page,
       },
     });
 
@@ -39,5 +41,8 @@ export async function onSearch(searchQuery, page = 1) {
       position: 'topRight',
       message: 'Failed to fetch images. Please try again later.',
     });
+  } finally {
+    loader.hidden = true;
+    loadBtn.hidden = false;
   }
 }

@@ -51,7 +51,8 @@ input:placeholder {
   color: #808080;
 }
 
-.search-btn {
+.btn {
+  font-size: 16px;
   width: 91px;
   height: 40px;
   padding: 8px 16px;
@@ -62,9 +63,14 @@ input:placeholder {
   border: transparent;
 }
 
-.search-btn:hover {
+.btn:hover {
   background-color: #6c8cff;
   border: #6c8cff;
+}
+.load-btn {
+  width: 125px;
+  
+  padding: 4px;
 }
 
 .gallery {
@@ -161,9 +167,7 @@ input:placeholder {
 }
 
 .loadMore {
-  display: flex;
-  justify-content: center;
-  margin: 20px auto;
+  
 }
 
 .go-TopIMG {
@@ -172,4 +176,13 @@ input:placeholder {
   bottom: 30px;
   width: 50px;
   height: 50px;
+}
+
+.load-btn-div {
+  width: 1128px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  
 }

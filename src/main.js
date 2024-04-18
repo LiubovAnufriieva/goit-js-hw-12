@@ -9,6 +9,7 @@ const loadBtn = document.querySelector('.load-btn');
 
 form.addEventListener('submit', onSubmit);
 loader.hidden = true;
+loadBtn.hidden = true;
 
 function onSubmit(event) {
   event.preventDefault();
@@ -24,10 +25,12 @@ function onSubmit(event) {
 
 loadBtn.addEventListener('click', loadMore);
 
+
+
 async function loadMore() {
   page += 1;
   loadBtn.disabled = true;
-  
+  scrollToNewCards();
   loader.hidden = true;
   try {
     const data = await onSearch(searchQuery, (page = 1));
@@ -36,9 +39,9 @@ async function loadMore() {
       createGalleryMarkup(data.results)
     );
     loader.hidden = true;
-
+    
     loadBtn.hidden = false;
-
+    loadBtn.disabled = false; 
     const card = document.querySelector('.gallery-card');
     const cardHeight = card.getBoundingClientRect().height;
     window.scrollBy({
@@ -46,8 +49,9 @@ async function loadMore() {
       top: cardHeight * 2,
       behavior: 'smooth',
     });
-    if (data.page >= 500) {
-      loader.hidden = true;
+    if (data.page >= page.totalPa) {
+      
+      loadBtn.hidden = true;
     }
   } catch (error) {
     alert(error.message);
@@ -56,4 +60,21 @@ async function loadMore() {
     loader.hidden = true;
   }
 
+}
+
+
+function getCardHeight() {
+  const firstCard = document.querySelector('.gallery-card');
+  if (firstCard) {
+    const cardRect = firstCard.getBoundingClientRect();
+    return cardRect.height;
+  }
+  return 0;
+}
+
+function scrollToNewCards() {
+  const cardHeight = getCardHeight();
+  if (cardHeight > 0) {
+    window.scrollBy(0, cardHeight * 2);
+  }
 }
