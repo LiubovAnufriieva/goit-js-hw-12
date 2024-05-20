@@ -28,24 +28,27 @@ loadMoreBtn.addEventListener('click', loadMorePictures);
 
 async function onFormSubmit(event) {
   event.preventDefault();
-  gallery.innerHTML = '';
-  currentPage = 1;
+ 
 
-  if (!loadMoreBtn.classList.contains('hidden')) {
-    removeLoadMoreBtn();
-  }
+  searchQuery = input.value.trim();
 
-  if (input.value.trim() === ' ') {
+ 
+  if (searchQuery === '') {
     return iziToast.warning({
       title: '',
-      position: 'topRight',
+      position: 'topCenter',
       message: 'The field can not be empty!!!',
       timeout: 3000,
       pauseOnHover: false,
     });
   }
 
-  searchQuery = input.value.trim();
+  gallery.innerHTML = '';
+  currentPage = 1;
+  // removeLoadMoreBtn();
+  if (!loadMoreBtn.classList.contains('hidden')) {
+    removeLoadMoreBtn();
+  }
   loaderShow();
 
   try {
