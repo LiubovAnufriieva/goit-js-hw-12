@@ -6,7 +6,7 @@ import 'izitoast/dist/css/iziToast.min.css';
 
 import { onSearch } from './js/pixabay-api.js';
 import { createGalleryMarkup } from './js/render-functions.js';
-import { form, input, gallery, loadMoreBtn, arrowUp } from './js/refs.js';
+import { form, gallery, loadMoreBtn, arrowUp } from './js/refs.js';
 import { scrollGallery } from './js/scroll-gallery.js';
 import { loaderShow } from './js/loader.js';
 import { addLoadMoreBtn, removeLoadMoreBtn } from './js/load-more-btn';
@@ -15,25 +15,25 @@ let searchQuery = ' ';
 let currentPage = 1;
 let totalPages;
 
-let galleryPictures = new SimpleLightbox('.gallery-list a', {
-    captionsData: 'alt',
-    captionDelay: 250,
-    captionPosition: 'bottom',
-  });
-// loaderHidden();
-// loadMoreBtnHidden();
 
+let galleryPictures = new SimpleLightbox('.gallery-list a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+  captionPosition: 'bottom',
+});
+
+
+arrowUp.style.display = 'none';
 form.addEventListener('submit', onFormSubmit);
 loadMoreBtn.addEventListener('click', loadMorePictures);
 
 async function onFormSubmit(event) {
   event.preventDefault();
- 
 
-  searchQuery = input.value.trim();
+  const { searchRequest } = event.currentTarget.elements;
+  searchQuery = searchRequest.value.trim();
 
- 
-  if (searchQuery === '') {
+  if (!searchQuery) {
     return iziToast.warning({
       title: '',
       position: 'topCenter',
@@ -45,7 +45,7 @@ async function onFormSubmit(event) {
 
   gallery.innerHTML = '';
   currentPage = 1;
-  // removeLoadMoreBtn();
+
   if (!loadMoreBtn.classList.contains('hidden')) {
     removeLoadMoreBtn();
   }
@@ -54,6 +54,7 @@ async function onFormSubmit(event) {
   try {
     const data = await onSearch(searchQuery, currentPage);
     if (data.hits.length === 0) {
+       
       iziToast.error({
         title: '',
         message:
@@ -62,6 +63,7 @@ async function onFormSubmit(event) {
         timeout: 3000,
         pauseOnHover: false,
       });
+      
     } else {
       gallery.insertAdjacentHTML('beforeend', createGalleryMarkup(data.hits));
 
@@ -122,24 +124,22 @@ async function loadMorePictures() {
     return (inputData.value = '');
   }
 
-  arrowUp.style.display = "none";
-window.addEventListener('scroll', function () {
+
+
+  window.addEventListener('scroll', function () {
     if (window.scrollY > 300) {
-       arrowUp.style.display = 'block';
+      arrowUp.style.display = 'block';
     } else {
-       arrowUp.style.display = 'none';
+      arrowUp.style.display = 'none';
     }
-});
-arrowUp.addEventListener("click", onTop);
-function onTop() {
+  });
+  arrowUp.addEventListener('click', onTop);
+  function onTop() {
     if (window.scrollY > 0) {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        })
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
     }
+  }
 }
-}
-
-
-

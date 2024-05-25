@@ -40,6 +40,7 @@ function createGalleryMarkup(arr) {
   `
         )
         .join('');
+        
 }
 
 export { createGalleryMarkup };
