@@ -15,13 +15,11 @@ let searchQuery = ' ';
 let currentPage = 1;
 let totalPages;
 
-
 let galleryPictures = new SimpleLightbox('.gallery-list a', {
   captionsData: 'alt',
   captionDelay: 250,
   captionPosition: 'bottom',
 });
-
 
 arrowUp.style.display = 'none';
 form.addEventListener('submit', onFormSubmit);
@@ -115,7 +113,7 @@ async function loadMorePictures() {
   } finally {
     if (currentPage > totalPages) {
       removeLoadMoreBtn();
-      loaderShow();
+      // loaderShow();
       cleanInput();
     }
   }
