@@ -113,7 +113,7 @@ async function loadMorePictures() {
   } finally {
     if (currentPage > totalPages) {
       removeLoadMoreBtn();
-      // loaderShow();
+      loaderShow();
       cleanInput();
     }
   }
