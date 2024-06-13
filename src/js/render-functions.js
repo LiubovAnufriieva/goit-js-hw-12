@@ -1,16 +1,16 @@
 function createGalleryMarkup(arr) {
-    return arr
-        .map(
-            ({
-                webformatURL,
-                largeImageURL,
-                tags,
-                likes,
-                views,
-                comments,
-                downloads,
-            }) =>
-  `
+  return arr
+    .map(
+      ({
+        webformatURL,
+        largeImageURL,
+        tags,
+        likes,
+        views,
+        comments,
+        downloads,
+      }) =>
+        `
     <li class="gallery-item">
     <div class="gallery-card">
       <a href="${largeImageURL}">
@@ -38,9 +38,8 @@ function createGalleryMarkup(arr) {
       </div>
     </li>
   `
-        )
-        .join('');
-        
+    )
+    .join('');
 }
 
 export { createGalleryMarkup };

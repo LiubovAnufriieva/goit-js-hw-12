@@ -14,6 +14,7 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+
 .hidden {
   display: none;
 }
@@ -91,11 +92,13 @@ input:placeholder {
   border-radius: 8px;
   overflow: hidden;
 }
+
 .gallery-card:hover,
 .gallery-card:focus {
   transform: scale(1.04);
   transition: height, 150ms ease-in-out;
 }
+
 .gallery-list {
   width: 1136px;
   display: flex;
@@ -139,11 +142,11 @@ input:placeholder {
   gap: 24px;
 }
 
-.info-item > p {
+.info-item>p {
   text-align: center;
 }
 
-.info-item > h2 {
+.info-item>h2 {
   margin-bottom: 4px;
   font-size: 12px;
 }
@@ -165,6 +168,7 @@ input:placeholder {
   background-color: #4e75ff;
   border: #4e75ff;
 }
+
 .load-more-btn:hover,
 .load-more-btn:focus {
   transform: scale(1.1);
@@ -187,6 +191,7 @@ input:placeholder {
   padding: 10px;
   margin-left: 140px;
 }
+
 .loader::before {
   content: "";
   position: absolute;
@@ -198,11 +203,14 @@ input:placeholder {
   border-radius: inherit;
   background: currentColor;
   box-shadow: -10px 0 12px 3px currentColor;
-  clip-path: polygon(0 5%, 100% 0,100% 100%,0 95%,-30px 50%);
+  clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 95%, -30px 50%);
   animation: l14 1s infinite linear;
 }
+
 @keyframes l14 {
-  100% {left: calc(100% + 20px)}
+  100% {
+    left: calc(100% + 20px)
+  }
 }
 
 
@@ -223,7 +231,8 @@ input:placeholder {
   height: 30px;
   color: #4e75ff;
 }
+
 .arrow-up:hover,
 .arrow-up:focus {
-transform: scale(1.5);
+  transform: scale(1.5);
 }

@@ -52,7 +52,6 @@ async function onFormSubmit(event) {
   try {
     const data = await onSearch(searchQuery, currentPage);
     if (data.hits.length === 0) {
-       
       iziToast.error({
         title: '',
         message:
@@ -61,7 +60,6 @@ async function onFormSubmit(event) {
         timeout: 3000,
         pauseOnHover: false,
       });
-      
     } else {
       gallery.insertAdjacentHTML('beforeend', createGalleryMarkup(data.hits));
 
@@ -121,8 +119,6 @@ async function loadMorePictures() {
   function cleanInput() {
     return (inputData.value = '');
   }
-
-
 
   window.addEventListener('scroll', function () {
     if (window.scrollY > 300) {

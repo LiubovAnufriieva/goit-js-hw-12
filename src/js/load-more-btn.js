@@ -1,11 +1,11 @@
-import { loadMoreBtn } from "./refs";
+import { loadMoreBtn } from './refs';
 
 function removeLoadMoreBtn() {
-    loadMoreBtn.classList.add('hidden');
+  loadMoreBtn.classList.add('hidden');
 }
 
 function addLoadMoreBtn() {
-    loadMoreBtn.classList.remove('hidden');
+  loadMoreBtn.classList.remove('hidden');
 }
 
 export { addLoadMoreBtn, removeLoadMoreBtn };
